@@ -1,8 +1,8 @@
 import { useState } from "react";
-export default function Profile({ data, setData }) {
-  console.log("data", data);
+export default function Profile({ data, setData, errors }) {
+  //console.log("data", data);
   function handleData(e) {
-    console.log("e", e);
+    //console.log("e", e);
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
   return (
@@ -15,6 +15,7 @@ export default function Profile({ data, setData }) {
       }}
     >
       <div>
+        {errors.name && <p className="error">{errors.name}</p>}
         <label htmlFor="username" style={{ marginRight: 10 }}>
           Name:
         </label>
@@ -27,18 +28,7 @@ export default function Profile({ data, setData }) {
         />
       </div>
       <div>
-        <label htmlFor="age" style={{ marginRight: 10 }}>
-          Age:
-        </label>
-        <input
-          id="age"
-          name="age"
-          type="number"
-          value={data.age}
-          onChange={handleData}
-        />
-      </div>
-      <div>
+        {errors.email && <p className="error">{errors.email}</p>}
         <label htmlFor="email" style={{ marginRight: 10 }}>
           Email:
         </label>
@@ -47,6 +37,19 @@ export default function Profile({ data, setData }) {
           name="email"
           type="email"
           value={data.email}
+          onChange={handleData}
+        />
+      </div>
+      <div>
+        {errors.age && <p className="error">{errors.age}</p>}
+        <label htmlFor="age" style={{ marginRight: 10 }}>
+          Age:
+        </label>
+        <input
+          id="age"
+          name="age"
+          type="number"
+          value={data.age}
           onChange={handleData}
         />
       </div>

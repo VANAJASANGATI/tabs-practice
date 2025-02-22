@@ -1,7 +1,8 @@
 export default function Settings() {
   return (
     <div>
-      <h1>Settings</h1>
+      <input type="radio" />
+      <label>Dark</label>
     </div>
   );
 }
